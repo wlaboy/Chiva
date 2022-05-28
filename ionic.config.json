@@ -1,0 +1,7 @@
+{
+  "name": "chiva",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
