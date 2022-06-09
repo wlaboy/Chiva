@@ -1,12 +1,13 @@
 import {
+  IonButton,
   IonCard,
   IonCardContent,
   IonCardHeader,
-  IonCardSubtitle,
   IonCardTitle,
   IonInput,
   IonItem,
 } from "@ionic/react";
+import { useState } from "react";
 
 interface TeamProps {
   name: string;
@@ -14,6 +15,7 @@ interface TeamProps {
 }
 
 function Team({ name, score }: TeamProps) {
+  const [text, setText] = useState<string>();
   return (
     <IonCard>
       <IonCardHeader>
@@ -24,9 +26,13 @@ function Team({ name, score }: TeamProps) {
           Score: <span>{score}</span>
         </p>
         <IonItem>
-          <IonInput placeholder="Enter score" />
+          <IonInput
+            value={text}
+            placeholder="Enter score"
+            onIonChange={(e) => setText(e.detail.value!)}
+          />
         </IonItem>
-        <button>Enter</button>
+        <IonButton expand="full">Enter</IonButton>
       </IonCardContent>
     </IonCard>
   );
