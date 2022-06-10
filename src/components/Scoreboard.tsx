@@ -6,11 +6,11 @@ import Team from "./Team";
 function Scoreboard() {
   const [handsPlayed, setHandsPlayed] = useState<number>(0);
   const [teamOne, setTeamOne] = useState<ITeam>({
-    name: "Geek Squad",
+    name: "Team #1",
     score: 0,
   });
   const [teamTwo, setTeamTwo] = useState<ITeam>({
-    name: "Muscle Squad",
+    name: "Team #2",
     score: 0,
   });
 
@@ -57,7 +57,7 @@ function Scoreboard() {
   };
 
   return (
-    <div>
+    <>
       <Team
         name={teamOne.name}
         score={teamOne.score}
@@ -68,7 +68,7 @@ function Scoreboard() {
         score={teamTwo.score}
         onScoreUpdate={updateTeamTwoScore}
       />
-    </div>
+    </>
   );
 }
 

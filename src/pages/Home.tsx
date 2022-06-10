@@ -7,7 +7,7 @@ import {
 } from "@ionic/react";
 import Scoreboard from "../components/Scoreboard";
 
-const Home: React.FC = () => {
+function Home() {
   return (
     <IonPage>
       <IonHeader>
@@ -21,11 +21,10 @@ const Home: React.FC = () => {
             <IonTitle size="large">Chiva</IonTitle>
           </IonToolbar>
         </IonHeader>
-
         <Scoreboard />
       </IonContent>
     </IonPage>
   );
-};
+}
 
 export default Home;
