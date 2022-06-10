@@ -35,6 +35,7 @@ function Team({ name, score, onScoreUpdate }: TeamProps) {
         <IonItem>
           <IonInput
             type="number"
+            inputmode="numeric"
             value={text}
             placeholder="Enter score"
             onIonChange={(e) => setText(e.detail.value!)}
