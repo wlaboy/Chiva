@@ -9,35 +9,65 @@ function Scoreboard() {
     name: "Geek Squad",
     score: 0,
   });
-
   const [teamTwo, setTeamTwo] = useState<ITeam>({
     name: "Muscle Squad",
     score: 0,
   });
 
-  const addPrizeToNewScore = (newScore: number, handsPlayed: number) => {
+  const updateTeamOneScore = (newScore: number) => {
+    let newScoreWithPrize = addPrizeToNewScore(newScore, handsPlayed);
+    let updatedScore = newScoreWithPrize + teamOne.score;
+    setTeamOne({ ...teamOne, score: updatedScore });
+  };
+
+  const updateTeamTwoScore = (newScore: number) => {
+    let newScoreWithPrize = addPrizeToNewScore(newScore, handsPlayed);
+    let updatedScore = newScoreWithPrize + teamTwo.score;
+    setTeamTwo({ ...teamTwo, score: updatedScore });
+  };
+
+  const addPrizeToNewScore = (
+    newScore: number,
+    handsPlayed: number
+  ): number => {
+    let updatedScore = 0;
     switch (handsPlayed) {
       case 0:
-        newScore += Prizes.FirstPrize;
+        updatedScore = newScore + Prizes.FirstPrize;
+        setHandsPlayed((handsPlayed += 1));
         break;
       case 1:
-        newScore += Prizes.SecondPrize;
+        updatedScore = newScore + Prizes.SecondPrize;
+        setHandsPlayed((handsPlayed += 1));
         break;
       case 2:
-        newScore += Prizes.ThirdPrize;
+        updatedScore = newScore + Prizes.ThirdPrize;
+        setHandsPlayed((handsPlayed += 1));
         break;
       case 3:
-        newScore += Prizes.FourthPrize;
+        updatedScore = newScore + Prizes.FourthPrize;
+        setHandsPlayed((handsPlayed += 1));
         break;
       default:
+        updatedScore += newScore;
         break;
     }
+
+    return updatedScore;
   };
 
   return (
     <div>
-      <Team name={teamOne.name} score={teamOne.score} />
-      <Team name={teamTwo.name} score={teamTwo.score} />
+      <Team
+        name={teamOne.name}
+        score={teamOne.score}
+        onScoreUpdate={updateTeamOneScore}
+      />
+      <Team
+        name={teamTwo.name}
+        score={teamTwo.score}
+        onScoreUpdate={updateTeamTwoScore}
+      />
     </div>
   );
 }

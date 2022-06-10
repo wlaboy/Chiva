@@ -12,10 +12,17 @@ import { useState } from "react";
 interface TeamProps {
   name: string;
   score: number;
+  onScoreUpdate: (newScore: number) => void;
 }
 
-function Team({ name, score }: TeamProps) {
+function Team({ name, score, onScoreUpdate }: TeamProps) {
   const [text, setText] = useState<string>();
+
+  const handleButtonClick = () => {
+    let newScore = parseInt(text!);
+    onScoreUpdate(newScore);
+  };
+
   return (
     <IonCard>
       <IonCardHeader>
@@ -32,7 +39,9 @@ function Team({ name, score }: TeamProps) {
             onIonChange={(e) => setText(e.detail.value!)}
           />
         </IonItem>
-        <IonButton expand="full">Enter</IonButton>
+        <IonButton onClick={handleButtonClick} expand="full">
+          Enter
+        </IonButton>
       </IonCardContent>
     </IonCard>
   );
