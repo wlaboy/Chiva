@@ -24,6 +24,7 @@ function Team({ name, score, onScoreUpdate }: TeamProps) {
   const handleButtonClick = () => {
     let newScore = parseInt(text!);
     onScoreUpdate(newScore);
+    setText("");
   };
 
   return (

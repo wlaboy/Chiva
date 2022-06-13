@@ -1,3 +1,4 @@
+import { IonButton } from "@ionic/react";
 import { useState } from "react";
 import { Prizes } from "../models/prizes";
 import { Team as ITeam } from "../models/team";
@@ -56,6 +57,11 @@ function Scoreboard() {
     return updatedScore;
   };
 
+  const handleNewGameClick = () => {
+    setTeamOne({ name: "Team #1", score: 0 });
+    setTeamTwo({ name: "Team #2", score: 0 });
+  };
+
   return (
     <>
       <Team
@@ -68,6 +74,11 @@ function Scoreboard() {
         score={teamTwo.score}
         onScoreUpdate={updateTeamTwoScore}
       />
+      <div className="ion-padding-horizontal">
+        <IonButton onClick={handleNewGameClick} expand="block">
+          New Game
+        </IonButton>
+      </div>
     </>
   );
 }
