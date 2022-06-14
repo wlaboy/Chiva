@@ -1,16 +1,16 @@
 import { IonButton } from "@ionic/react";
 import { useState } from "react";
 import { Prizes } from "../models/prizes";
-import { Team as ITeam } from "../models/team";
+import { Team as TeamModel } from "../models/team";
 import Team from "./Team";
 
 function Scoreboard() {
   const [handsPlayed, setHandsPlayed] = useState<number>(0);
-  const [teamOne, setTeamOne] = useState<ITeam>({
+  const [teamOne, setTeamOne] = useState<TeamModel>({
     name: "Team #1",
     score: 0,
   });
-  const [teamTwo, setTeamTwo] = useState<ITeam>({
+  const [teamTwo, setTeamTwo] = useState<TeamModel>({
     name: "Team #2",
     score: 0,
   });
