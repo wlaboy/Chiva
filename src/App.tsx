@@ -1,8 +1,13 @@
+import { Container } from "react-bootstrap";
+import Scoreboard from "./components/Scoreboard";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function App() {
   return (
-    <div>
-      <h1>Hello, world</h1>
-    </div>
+    <Container>
+      <h1>Chiva</h1>
+      <Scoreboard />
+    </Container>
   );
 }
 
