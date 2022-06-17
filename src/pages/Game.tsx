@@ -7,7 +7,7 @@ import {
 } from "@ionic/react";
 import Scoreboard from "../components/Scoreboard";
 
-function Home() {
+function Game() {
   return (
     <IonPage>
       <IonHeader>
@@ -27,4 +27,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Game;
