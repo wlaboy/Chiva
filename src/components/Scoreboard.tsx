@@ -1,24 +1,35 @@
 import { IonButton } from "@ionic/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { SettingsContextType } from "../@types/settings";
+import { SettingsContext } from "../context/SettingsContext";
 import { Prizes } from "../models/prizes";
 import { Team as TeamModel } from "../models/team";
 import Team from "./Team";
 
 function Scoreboard() {
+  const { teamOneName, teamTwoName, usePrizes } = useContext(
+    SettingsContext
+  ) as SettingsContextType;
+
   const [handsPlayed, setHandsPlayed] = useState<number>(0);
-  const [teamOne, setTeamOne] = useState<TeamModel>({
-    name: "Team #1",
-    score: 0,
-  });
+  const [teamOneScore, setTeamOneScore] = useState<number>(0);
+
   const [teamTwo, setTeamTwo] = useState<TeamModel>({
     name: "Team #2",
     score: 0,
   });
 
-  const updateTeamOneScore = (newScore: number) => {
-    let newScoreWithPrize = addPrizeToNewScore(newScore, handsPlayed);
-    let updatedScore = newScoreWithPrize + teamOne.score;
-    setTeamOne({ ...teamOne, score: updatedScore });
+  const handleTeamOneScoreUpdate = (newScore: number) => {
+    let updatedScore: number = 0;
+
+    if (usePrizes) {
+      let newScoreWithPrize = addPrizeToNewScore(newScore, handsPlayed);
+      updatedScore = newScoreWithPrize + teamOneScore;
+    } else {
+      updatedScore += teamOneScore;
+    }
+
+    setTeamOneScore(updatedScore);
   };
 
   const updateTeamTwoScore = (newScore: number) => {
@@ -58,23 +69,23 @@ function Scoreboard() {
   };
 
   const handleNewGameClick = () => {
-    setTeamOne({ name: "Team #1", score: 0 });
+    setTeamOneScore(0);
     setTeamTwo({ name: "Team #2", score: 0 });
   };
 
   return (
     <>
       <Team
-        name={teamOne.name}
-        score={teamOne.score}
-        onScoreUpdate={updateTeamOneScore}
+        name={teamOneName}
+        score={teamOneScore}
+        onScoreUpdate={handleTeamOneScoreUpdate}
       />
       <Team
-        name={teamTwo.name}
+        name={teamTwoName}
         score={teamTwo.score}
         onScoreUpdate={updateTeamTwoScore}
       />
-      <div className="ion-padding-horizontal">
+      <div style={{ padding: "2rem 1rem 2rem 1rem" }}>
         <IonButton onClick={handleNewGameClick} expand="block">
           New Game
         </IonButton>

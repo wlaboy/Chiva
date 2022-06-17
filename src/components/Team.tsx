@@ -42,8 +42,8 @@ function Team({ name, score, onScoreUpdate }: TeamProps) {
               className="ion-padding-vertical"
               type="number"
               inputmode="numeric"
-              value={text}
               placeholder="Enter score"
+              value={text}
               onIonChange={(e) => setText(e.detail.value!)}
             />
           </IonItem>
