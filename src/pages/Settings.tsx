@@ -55,7 +55,6 @@ function Settings() {
             style={{ marginTop: "1rem", marginBottom: "1rem" }}
             id="team-two-name"
             type="text"
-            value={text}
             onChange={(e) => setText(e.target.value)}
           />
           <IonButton onClick={handleTeamTwoUpdate}>Update Name</IonButton>
