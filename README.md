@@ -1,3 +1,3 @@
 # Chiva
 
-Domino score keeping app, written with Ionic, React, and TypeScript.
+A dominoes scoreboard application, written with React, TypeScript, Bootstrap, React-Bootstrap, and Vite.
