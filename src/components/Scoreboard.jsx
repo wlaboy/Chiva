@@ -1,14 +1,7 @@
-import { useState } from "react";
-import { Team as ITeam } from "../team/teamModel";
-import Team from "../team/Team";
+import Team from "./Team";
 
-function Scoreboard() {
-  const [teams, setTeams] = useState<ITeam[]>([
-    { name: "Team #1", score: 0 },
-    { name: "Team #2", score: 0 },
-  ]);
-
-  const updateScore = () => {
+function Scoreboard({ teams, setTeams }) {
+  const handleScoreUpdate = () => {
     console.log(`Team: ${teams[0].name} | Score: ${teams[0].score}`);
     console.log(`Team: ${teams[1].name} | Score: ${teams[1].score}`);
   };
@@ -23,7 +16,7 @@ function Scoreboard() {
         ))}
       </div>
       <div className="row m-2 pt-2">
-        <button className="btn btn-primary" onClick={updateScore}>
+        <button className="btn btn-primary" onClick={handleScoreUpdate}>
           Enter Round
         </button>
       </div>

@@ -1,9 +1,4 @@
-interface Props {
-  name: string;
-  score: number;
-}
-
-function Team({ name, score }: Props) {
+function Team({ name, score }) {
   return (
     <div className="card">
       <div className="card-body">
