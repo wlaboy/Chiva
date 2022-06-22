@@ -1,24 +1,31 @@
+import { useState } from "react";
 import Team from "./Team";
 
-function Scoreboard({ teams, setTeams }) {
-  const handleScoreUpdate = () => {
-    console.log(`Team: ${teams[0].name} | Score: ${teams[0].score}`);
-    console.log(`Team: ${teams[1].name} | Score: ${teams[1].score}`);
-  };
+function Scoreboard() {
+  const [teamOne, setTeamOne] = useState({
+    name: "Team #1",
+    score: 0,
+  });
+
+  const [teamTwo, setTeamTwo] = useState({
+    name: "Team #2",
+    score: 0,
+  });
 
   return (
-    <div className="container">
+    <div className="pt-3">
       <div className="row">
-        {teams.map((team) => (
-          <div className="col" key={team.name}>
-            <Team name={team.name} score={team.score} />
-          </div>
-        ))}
+        <div className="col">
+          <Team team={teamOne} setTeam={setTeamOne} />
+        </div>
+        <div className="col">
+          <Team team={teamTwo} setTeam={setTeamTwo} />
+        </div>
       </div>
-      <div className="row m-2 pt-2">
-        <button className="btn btn-primary" onClick={handleScoreUpdate}>
-          Enter Round
-        </button>
+      <div className="row justify-content-center">
+        <div className="col">
+          <button className="btn btn-primary btn-lg">New Game</button>
+        </div>
       </div>
     </div>
   );
