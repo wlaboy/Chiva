@@ -20,6 +20,9 @@ function Team({ team, setTeam }) {
           <input
             className="form-control"
             type="number"
+
+pattern="\d*"
+
             min="0"
             max="500"
             placeholder="Enter score"
