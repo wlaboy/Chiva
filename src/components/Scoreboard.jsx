@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Team from "./Team";
 
 function Scoreboard() {
@@ -12,9 +12,14 @@ function Scoreboard() {
     score: 0,
   });
 
+  const handleNewGameButton = () => {
+    setTeamOne({ ...teamOne, score: 0 });
+    setTeamTwo({ ...teamTwo, score: 0 });
+  };
+
   return (
-    <div className="pt-3">
-      <div className="row">
+    <>
+      <div className="row pt-2">
         <div className="col">
           <Team team={teamOne} setTeam={setTeamOne} />
         </div>
@@ -22,12 +27,15 @@ function Scoreboard() {
           <Team team={teamTwo} setTeam={setTeamTwo} />
         </div>
       </div>
-      <div className="row justify-content-center">
-        <div className="col">
-          <button className="btn btn-primary btn-lg">New Game</button>
-        </div>
+      <div className="d-flex pt-4 justify-content-center">
+        <button
+          onClick={handleNewGameButton}
+          className="btn btn-primary btn-lg"
+        >
+          New Game
+        </button>
       </div>
-    </div>
+    </>
   );
 }
 

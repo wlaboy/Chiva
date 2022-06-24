@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function Team({ team, setTeam }) {
   const [text, setText] = useState("");
@@ -20,9 +20,7 @@ function Team({ team, setTeam }) {
           <input
             className="form-control"
             type="number"
-
-pattern="\d*"
-
+            pattern="\d*"
             min="0"
             max="500"
             placeholder="Enter score"
