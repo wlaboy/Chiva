@@ -23,7 +23,6 @@ function Team({ team, setTeam }) {
             pattern="\d*"
             min="0"
             max="500"
-            placeholder="Enter score"
             value={text}
             onChange={(e) => setText(e.currentTarget.value)}
           />
