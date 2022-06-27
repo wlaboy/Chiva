@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Team from "./Team";
 
 function Scoreboard() {
+  const Prizes = {
+    FirstPrize: 100,
+    SecondPrize: 75,
+    ThirdPrize: 50,
+    FourthPrize: 25,
+  };
+
   const [teams, setTeams] = useState([
     { id: 1, name: "Team #1", score: 0 },
     { id: 2, name: "Team #2", score: 0 },
