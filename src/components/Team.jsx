@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-function Team({ team, setTeam }) {
+function Team({ team, updateScore }) {
   const [text, setText] = useState("");
 
   const handleAddButtonClick = () => {
     let newScore = parseInt(text);
-    setTeam({ name: team.name, score: (team.score += newScore) });
+    updateScore(team.id, newScore);
     setText("");
   };
 
@@ -23,6 +23,7 @@ function Team({ team, setTeam }) {
             pattern="\d*"
             min="0"
             max="500"
+            placeholder="Enter score here"
             value={text}
             onChange={(e) => setText(e.currentTarget.value)}
           />
