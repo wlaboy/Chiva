@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { GameContext } from "./GameContext";
+import ScoreTable from "./ScoreTable";
 import Team from "./Team";
 
 function Scoreboard() {
@@ -76,6 +77,11 @@ function Scoreboard() {
         </div>
         <div className="col">
           <Team team={teams[1]} updateScore={updateScore} />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <ScoreTable teams={teams} />
         </div>
       </div>
       <div className="d-flex pt-4 justify-content-center">
