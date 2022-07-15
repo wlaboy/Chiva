@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
-import { GameContext } from "./GameContext";
+import React, { useState } from "react";
 import Team from "./Team";
 
 function Scoreboard() {
-  const game = useContext(GameContext);
+  const [handsPlayed, setHandsPlayed] = useState(0);
 
   const [teams, setTeams] = useState([
     { id: 1, name: "Team #1", score: 0 },
@@ -15,7 +14,7 @@ function Scoreboard() {
       { id: 1, name: "Team #1", score: 0 },
       { id: 2, name: "Team #2", score: 0 },
     ]);
-    game.handsPlayed = 0;
+    setHandsPlayed(0);
   };
 
   const updateScore = (id, newScore) => {
@@ -35,7 +34,7 @@ function Scoreboard() {
   };
 
   const updateHandsPlayed = () => {
-    game.handsPlayed += 1;
+    setHandsPlayed(handsPlayed + 1);
   };
 
   const calculateNewScoreWithPrizes = (newScore) => {
@@ -46,24 +45,22 @@ function Scoreboard() {
       fourthPrize: 25,
     };
 
-    if (game.usePrizes) {
-      switch (game.handsPlayed) {
-        case 0:
-          newScore += prizes.firstPrize;
-          break;
-        case 1:
-          newScore += prizes.secondPrize;
-          break;
-        case 2:
-          newScore += prizes.thirdPrize;
-          break;
-        case 3:
-          newScore += prizes.fourthPrize;
-          break;
-        default:
-          newScore += 0;
-          break;
-      }
+    switch (handsPlayed) {
+      case 0:
+        newScore += prizes.firstPrize;
+        break;
+      case 1:
+        newScore += prizes.secondPrize;
+        break;
+      case 2:
+        newScore += prizes.thirdPrize;
+        break;
+      case 3:
+        newScore += prizes.fourthPrize;
+        break;
+      default:
+        newScore += 0;
+        break;
     }
     return newScore;
   };
@@ -81,8 +78,7 @@ function Scoreboard() {
       <div className="d-flex pt-4 justify-content-center">
         <button
           onClick={handleNewGameButton}
-          className="btn btn-primary btn-lg"
-        >
+          className="btn btn-primary btn-lg">
           New Game
         </button>
       </div>

@@ -30,8 +30,7 @@ function Team({ team, updateScore }) {
           <button
             className="btn btn-primary"
             type="button"
-            onClick={handleAddButtonClick}
-          >
+            onClick={handleAddButtonClick}>
             Add
           </button>
         </form>
